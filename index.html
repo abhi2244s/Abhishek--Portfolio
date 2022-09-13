@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://kit.fontawesome.com/658fd40309.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -23,6 +24,7 @@
             viewB : '#4A4A4A',
             grid : '#FFFFFF',
             code :'#CFCCCC',
+            black :'#000000',
           }
         }
       }
@@ -60,6 +62,38 @@
   </style>
 </head>
 <body>
+ <!-- navbar -->
+
+<div class="w-full text-gray-700 bg-black dark-mode:text-gray-200 dark-mode:bg-gray-800 sticky top-0">
+  <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div class="p-4 flex flex-row items-center justify-between">
+      <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"><img src="img/logo.jpg" class="w-16"></a>
+      <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+          <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row ">
+      <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-gray-700  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0  focus:text-gray-900  focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="https://github.com/abhi2244s"><i class="fa fa-github mr-2" style="font-size:20px;color: white;"></i></a>
+      <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-gray-700  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0  focus:text-gray-900  focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="https://www.linkedin.com/in/abhishek-singh-8a2b06214"><i class="fa fa-linkedin-square mr-2" style="font-size:20px;color: white;"></i></a>
+
+      <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-gray-700  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0  focus:text-gray-900  focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#"><i class="fa fa-twitter mr-2" style="font-size:20px;color: white;"></i></a>
+
+      <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-gray-700  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0  focus:text-gray-900  focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="mailto:abhisheksingh16102000@gmail.com"><i class="fa fa-envelope mr-2 " style="font-size:20px;color: white;"></i></a>
+    
+      <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-white" href="#link">About</a>
+      <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-white" href="#link2">Contact</a>
+      <!-- <div @click.away="open = false" class="relative" x-data="{ open: false }">
+        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+          
+        </div>
+      </div>     -->
+    </nav>
+  </div>
+</div>
+ <!-- navbar -->
   <main class="md:h-[900px] bg-sect h-auto">
     <section class="bg-bg md:h-[500px] h-[600px] section h-auto ">
       <div class="container mx-auto w-5/6 md:mb-0 mb-24">
@@ -68,24 +102,24 @@
         <h3 class="text-white text-2xl font-normal leading-10 mt-5">Full Stack Developer from Uttar Pradesh, India</h3>
         <div class="flex md:mb-0 mb-24">
           <div class="bg-sect w-60 h-14 text-center mt-8 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">
-            <a href = "#" class="text-white"> <i class="fa fa-eye mr-2 mt-4" style="font-size:22px;"></i>Projects</a>
+            <a href = "#web" class="text-white"> <i class="fa fa-eye mr-2 mt-4" style="font-size:22px;"></i>Projects</a>
            </div>
            <div class="bg-git w-60 h-14 text-center ml-5 mt-8 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">
-            <a href = "#" class="text-resume"><i class="fa fa-github mr-2 mt-4" style="font-size:22px"></i>Github</a>
+            <a href = "https://github.com/abhi2244s?tab=repositories" class="text-resume"><i class="fa fa-github mr-2 mt-4" style="font-size:22px"></i>Github</a>
            </div>
         </div>
      
       </div>
    
     </section>
-    <section class="bg-sect md:h-96 section1">
+    <section class="bg-sect md:h-96 section1" id="link">
       <div class="container mx-auto w-5/6">
         <h1 class="text-center text-4xl font-bold leading-[51px] mt-5 md:visible invisible">About Me</h1>
         <div class="flex justify-between items-center md:flex-row flex-col-reverse">
           <div class="md:w-4/6 text-center md:m-5 md:pt-16 pt-8">
             <p class="text-2xl font-normal leading-8">Hi I'm Abhishek Singh, Full Stack Developer, Well versed in coding with Node JS for Back end and React.js, Redux, HTML, CSS, Tailwind Css & Javascript for the frontend.</p>
             <div>
-              <button class="w-52 h-10 bg-view rounded-full border-2 border-solid border-viewB text-xs mt-8 md:mb-0 mb-12 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">View Resume</button>
+              <button class="w-52 h-10 bg-view rounded-full border-2 border-solid border-viewB text-xs mt-8 md:mb-0 mb-12 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="Resume/ABHISHEK's Resume (5).pdf" target="_blank">View Resume</a></button>
             </div>
           </div>
           <div class="md:w-2/6 text-center md:m-5 md:mt-0 mt-5 ">
@@ -95,11 +129,11 @@
       </div>
     </section>
   </main>
-  <section class="bg-bg md:h-[870px]">
+  <section class="bg-bg md:h-[870px] h-auto">
      <div class="container mx-auto w-5/6">
       <h1 class="text-center text-2xl font-bold leading-9 text-white pt-8">Tools and Technologies</h1>
       <div class="bg-view mt-8 rounded-lg h-56">
-        <div class="grid md:grid-cols-6 grid-cols-3  pt-10 gap-4 md:mb-0 mb-12">
+        <div class="grid md:grid-cols-6 grid-cols-3  pt-10 gap-4 md:mb-0 mb-24">
           <div>
             <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"class="md:w-32 w-20">
           </div>
@@ -127,7 +161,7 @@
       </div>
      </div>
 
-     <div class="container mx-auto w-5/6">
+     <div class="container mx-auto w-5/6 " id="web">
       <div class="text-center md:mt-16 mt-5">
         <h1 class="text-2xl font-bold text-white leading-8">Web 2.0 Project</h1>
       </div>
@@ -138,13 +172,15 @@
         <div class="border-2 border-solid bg-grid border-grid "> 
           <h1 class="text-2xl font-bold leading-8 mt-3 m-3">Paytm Clone</h1>
           <h2 class="text-lg font-bold leading-7 mt-3 m-3">Technology Used</h2>
-          <div class="flex text-center items-center mt-3">
+          <div class="flex text-center items-center mt-3 m-2">
             <img src="img/html.png" class="w-12">
             <img src="img/css.png" class="w-12">
           </div>
           <div class="mt-5 m-3">
-            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Live Version</button>
-            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Code</button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href
+              ="https://paytm-clone-apps.netlify.app/">Live Version</a></button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <a href
+              ="https://github.com/abhi2244s/Paytm-Clone">Code</a></button>
           </div>
         </div>
        </div>
@@ -153,13 +189,13 @@
         <div class="border-2 border-solid bg-grid border-grid "> 
           <h1 class="text-2xl font-bold leading-8 mt-3 m-3">Pensil Clone</h1>
           <h2 class="text-lg font-bold leading-7 mt-3 m-3">Technology Used</h2>
-          <div class="flex text-center items-center mt-3">
+          <div class="flex text-center items-center mt-3 m-2">
             <img src="img/html.png" class="w-12">
             <img src="img/css.png" class="w-12">
           </div>
           <div class="mt-5 m-3">
-            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Live Version</button>
-            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Code</button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://pensil-clone-web.netlify.app/">Live Version</a></button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://github.com/abhi2244s/Pensil-Clone">Code</a></button>
           </div>
         </div>
        </div>
@@ -168,13 +204,13 @@
         <div class="border-2 border-solid bg-grid border-grid "> 
           <h1 class="text-2xl font-bold leading-8 mt-3 m-3">Rode Clone</h1>
           <h2 class="text-lg font-bold leading-7 mt-3 m-3">Technology Used</h2>
-          <div class="flex text-center items-center mt-3">
+          <div class="flex text-center items-center mt-3  m-2">
             <img src="img/html.png" class="w-12">
             <img src="img/css.png" class="w-12">
           </div>
           <div class="mt-5 m-3">
-            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Live Version</button>
-            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Code</button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://rode-clone-website.netlify.app/">Live Version</a></button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://github.com/abhi2244s/Rode-Clone">Code</a></button>
           </div>
         </div>
        </div>
@@ -183,38 +219,38 @@
         <div class="border-2 border-solid bg-grid border-grid "> 
           <h1 class="text-2xl font-bold leading-8 mt-3 m-3">Shopify Clone</h1>
           <h2 class="text-lg font-bold leading-7 mt-3 m-3">Technology Used</h2>
-          <div class="flex text-center items-center mt-3">
+          <div class="flex text-center items-center mt-3 m-2">
             <img src="img/html.png" class="w-12">
             <img src="img/css.png" class="w-12">
           </div>
           <div class="mt-5 m-3">
-            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Live Version</button>
-            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Code</button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-2 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://shopify-clone-website.netlify.app/">Live Version</a></button>
+            <button class="border-2 border-solid bg-grid border-code p-1 px-5 ml-3 text-xs rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"><a href="https://github.com/abhi2244s/Shopify-Clone">Code</a></button>
           </div>
         </div>
        </div>
       </div>
      </div>
   </section>
-  <section class="bg-[#000000] md:h-48 h-auto sm:flex md:hidden lg:flex">
+  <section class="bg-[#000000] md:h-48 h-auto sm:flex md:hidden lg:flex" id="link2">
     <div class="container mx-auto w-5/6">
       <div class="text-center">
         <h1 class="text-2xl font-bold text-white leading-8 text-center pt-7">Contact Me</h1>
       </div>
 
       <div class=" space-x-6 mt-8 flex items-center w-6/12 mx-auto md:flex-row flex-col">
-        <div class="text-center m-3">
-          <a href="#" class="text-[#4A4A4A] border-2 border-solid bg-grid border-grid rounded p-2 px-3 text-center"><i class="fa fa-envelope mr-2" style="font-size:20px"></i>Email</a>
+        <div class="text-center m-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300  border-2 border-solid bg-grid border-grid rounded p-2 px-3 ">
+          <a href="mailto:abhisheksingh16102000@gmail.com" class="text-[#4A4A4A]  text-center"><i class="fa fa-envelope mr-2 " style="font-size:20px"></i>Email</a>
         </div>
     
-        <div class="m-3">
-          <a href="#" class="text-[#4A4A4A] border-2 border-solid bg-grid border-grid rounded p-2 px-3 text-center"><i class="fa fa-linkedin-square mr-2" style="font-size:20px"></i>Linkedin</a>
+        <div class="m-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 border-2 border-solid bg-grid border-grid rounded p-2 px-3 ">
+          <a href="https://www.linkedin.com/in/abhishek-singh-8a2b06214" class="text-[#4A4A4A] text-center "><i class="fa fa-linkedin-square mr-2" style="font-size:20px"></i>Linkedin</a>
         </div>
-        <div class="m-3">
-          <a href="#" class="text-[#4A4A4A] border-2 border-solid bg-grid border-grid rounded p-2 px-3 text-center"><i class="fa fa-github mr-2" style="font-size:20px"></i>Github</a>
+        <div class="m-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 border-2 border-solid bg-grid border-grid rounded p-2 px-3">
+          <a href="https://github.com/abhi2244s" class="text-[#4A4A4A]  text-center "><i class="fa fa-github mr-2" style="font-size:20px"></i>Github</a>
         </div>
-        <div class="m-3">
-          <a href="#" class="text-[#4A4A4A] border-2 border-solid bg-grid border-grid rounded p-2 px-3 text-center"><i class="fa fa-twitter mr-2" style="font-size:20px"></i>Twitter</a>
+        <div class="m-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 border-2 border-solid bg-grid border-grid rounded p-2 px-3 ">
+          <a href="#" class="text-[#4A4A4A] "><i class="fa fa-twitter mr-2" style="font-size:20px"></i>Twitter</a>
         </div>
 
       </div>
